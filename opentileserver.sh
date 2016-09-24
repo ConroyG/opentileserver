@@ -40,7 +40,7 @@ apt-get -y install bc
 if [ $? -ne 0 ]; then	echo "Error: Apt install failed";	exit 1; fi
 
 #C_MEM is the sum of free memory and cached memory
-C_MEM=$(free -m | grep -i 'mem:' | sed 's/[ \t]\+/ /g' | cut -f4,7 -d' ' | tr ' ' '+' | bc)
+C_MEM=7000
 NP=$(grep -c 'model name' /proc/cpuinfo)
 osm2pgsql_OPTS="--slim -d ${OSM_DB} -C ${C_MEM} --number-processes ${NP} --hstore"
 
